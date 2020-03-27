@@ -21,12 +21,6 @@ app.use(require("express-session")({
     saveUninitialized: false
 }));
 
-app.use(require("express-session")({
-    secret: "Welcome to the future",
-    resave: false,
-    saveUninitialized: false
-}));
-
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -43,9 +37,6 @@ app.use(authRoutes);
 app.use("/devices", deviceRoutes);
 
 
-app.get("/", function (req, res) {
-    res.send("Landing Page");
-});
 
 app.listen(3000, '127.0.0.1', function () {
     console.log("Server started");
