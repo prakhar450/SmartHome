@@ -4,8 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
+  "jest" : {"testEnvironment": "node",
+  "modulePaths":["/Users/meghashishodia/SmartHome"]},
+
   "author": "Prakhar Srivastav",
   "license": "ISC",
   "dependencies": {
@@ -14,6 +17,7 @@
     "express": "^4.17.1",
     "express-pino-logger": "^4.0.0",
     "express-session": "^1.17.0",
+    "jest": "^25.2.3",
     "log4js": "^6.1.2",
     "method-override": "^3.0.0",
     "mongoose": "^5.9.6",
@@ -21,6 +25,7 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.0.1",
     "pino": "^5.17.0",
-    "pino-tee": "^0.3.0"
+    "pino-tee": "^0.3.0",
+    "supertest": "^4.0.2"
   }
 }
