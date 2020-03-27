@@ -3,14 +3,35 @@ const express = require("express"),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
     deviceRoutes = require("./routes/device"),
-    authRoutes = require("./routes/auth");
+    authRoutes = require("./routes/auth"),
+    passport = require("passport"),
+    LocalStrategy = require("passport-local"),
+    User = require("./models/user")
 
 mongoose.connect("mongodb://localhost:27017/smart_home", { useNewUrlParser: true });
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(require("express-session")({
+    secret: "Welcome to the future",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
 app.use(authRoutes);
 app.use("/devices", deviceRoutes);
+
+
+app.get("/", function (req, res) {
+    res.send("Landing Page");
+});
 
 app.listen(3000, '127.0.0.1', function () {
     console.log("Server started");
