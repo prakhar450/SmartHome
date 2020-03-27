@@ -10,3 +10,18 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-default">
+        <div class="conatiner-fluid">
+            <div class="collapse navbar-collapse"></div>
+            <ul class="nav navbar-nav navbar-right">
+
+                <% if(!currentUser) { %>
+                <li><a href="/login">Login</a></li>
+
+                <% } else{ %>
+                <li><a href="/logout">Logout</a></li>
+                <% } %>
+
+            </ul>
+        </div>
+    </nav>

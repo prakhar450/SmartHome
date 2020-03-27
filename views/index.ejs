@@ -1,0 +1,27 @@
+<%- include("partials/header") %>
+
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h2>My Devices</h2>
+
+            <a href="/devices/new">Add new device</a>
+
+        </div>
+    </header>
+
+    <div class="row">
+
+        <% devices.forEach(function(devices){ %>
+
+        <div class="col-md-3 col-sm-6 form-group">
+            <a class="btn btn-primary btn-lrg" href="/devices/<%= devices._id %>"><%= devices.name %></a>
+        </div>
+
+        <% }); %>
+    </div>
+</div>
+
+
+<%- include("partials/footer") %>

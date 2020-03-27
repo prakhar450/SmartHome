@@ -1,0 +1,38 @@
+<%- include("partials/header") %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h2 style="text-align: center;"><%= device.name %></h2>
+        </div>
+    </header>
+    <div style="width: 30%; margin:50px auto;">
+        
+        <div class="dropdown" style="text-align: center;">
+            <button class="btn btn-block btn-primary dropdown-toggle mr-10" type="button" data-toggle="dropdown">Device State
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="/devices/<%= device.name %>/action/ON">ON</a></li>
+                <li><a href="/devices/<%= device.name %>/action/OFF">OFF</a></li>
+                <li><a href="/devices/<%= device.name %>/action/STANDBY">STANDBY</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div style="width: 30%; margin:50px auto; text-align: center;">
+        <div class="col-md-3 col-sm-6 p-5 text-center">
+            <a class="btn btn-space btn-primary btn-lrg btn-block mr-10"
+                href="/devices/<%= device.name %>/action/<%= device.action %>"><%= device.action %></a>
+        </div>
+    </div>
+
+
+    <div style="width: 30%; margin:50px auto;">
+        <form action="/devices/<%= device._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger btn-block">Delete Device</button>
+        </form>
+        <a href="/devices">Go Back</a>
+    </div>
+
+</div>
+<%- include("partials/footer") %>
