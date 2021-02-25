@@ -1,4 +1,4 @@
-# Readme.md
+# SmartHome
 
 The web console allows a user to register themselves, add new devices, control actions on them and delete devices. 
 
