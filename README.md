@@ -1,34 +1,78 @@
-# SmartHome
+# Smart Home Console
 
-The web console allows a user to register themselves, add new devices, control actions on them and delete devices. 
+A web-based IoT device management console where users can register, add smart home devices, control actions, and monitor their connected devices. Built with Node.js, Express, and MongoDB.
 
-## Installation
+## Features
 
-To use the project one has to install npm and MongoDB.
+- User registration and authentication (Passport.js)
+- Add, view, and remove smart home devices
+- Control device actions
+- Structured logging with Pino and Log4js
+- API tests with Jest and Supertest
+
+## Tech Stack
+
+- **Backend:** Node.js, Express
+- **Database:** MongoDB (Mongoose ODM)
+- **Auth:** Passport.js with local strategy
+- **Views:** EJS templates with partials
+- **Logging:** Pino, Log4js
+- **Testing:** Jest, Supertest
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- MongoDB
+
+### Setup
+
 ```bash
-brew update
-brew install node
+git clone https://github.com/prakhar450/SmartHome.git
+cd SmartHome
+npm install
 ```
-To install Mongodb, please visit https://www.mongodb.com
 
-## Usage
+Start MongoDB in a separate terminal:
 
-Clone the repository in your local folder. Start an instance of mongod in a separate terminal:
-```
+```bash
 mongod
 ```
-To start the app run the following commands in a terminal:
-```
-npm install
+
+Run the app:
+
+```bash
 node app.js
 ```
-Now the user has to register themselves and login to the console. The user can add devices, list all devices, remove devices and perform action on devices.
-## Testing
-To run tests, run the following command on a terminal:
-```
+
+The console will be available at `http://localhost:3000`.
+
+### Testing
+
+```bash
 npm run test
 ```
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
+## Project Structure
+
+```
+app.js               # Express server + middleware config
+models/
+  user.js            # User model (passport-local-mongoose)
+  device.js          # Device model (name, action, author)
+routes/
+  auth.js            # Registration and login routes
+  device.js          # Device CRUD and actions
+__test__/
+  device.spec.js     # API tests
+views/               # EJS templates
+  partials/          # Shared components
+screenshots/         # App screenshots
+```
+
+## Screenshots
+
+![Device List](screenshots/Screenshot%202020-03-27%20at%205.57.15%20PM.png)
+![Add Device](screenshots/Screenshot%202020-03-27%20at%205.57.33%20PM.png)
+![Device Actions](screenshots/Screenshot%202020-03-27%20at%205.58.22%20PM.png)
