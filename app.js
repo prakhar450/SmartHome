@@ -6,7 +6,7 @@ const express = require("express"),
     authRoutes = require("./routes/auth"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
-    User = require("./models/user")
+    User = require("./models/user"),
     methodOverride = require("method-override");
 
 mongoose.connect("mongodb://localhost:27017/smart_home", { useNewUrlParser: true });
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 app.use(require("express-session")({
-    secret: "Welcome to the future",
+    secret: process.env.SESSION_SECRET || "dev-secret-change-in-production",
     resave: false,
     saveUninitialized: false
 }));
